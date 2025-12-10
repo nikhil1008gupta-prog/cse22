@@ -13,7 +13,7 @@ margin-bottom: 30px;
 .product-box
 {
 background-color: white;
-width: 300px;
+width: 700px;
 margin: 0 auto;
 padding: 15px;
 border: 2px solid gray;
@@ -21,7 +21,7 @@ border-radius: 8px;
 }
 .product-image
 {
-    width: 100px;
+    width:500px;
     height: auto;
     border-radius: 5px;
 }
