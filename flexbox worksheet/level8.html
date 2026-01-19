@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Hero - Final Project</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;            
+            
+            background-color: #2196f3;
+            color: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        
+        .menu {
+            display: flex;       
+            gap: 25px;          
+            list-style: none;    
+        }
+
+        .menu li {
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .menu li:hover {
+            color: #bbdefb; 
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">FlexHero.io</div>
+        
+        <ul class="menu">
+            <li>Home</li>
+            <li>About</li>
+            <li>Courses</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+    
+
+</body>
+</html>
