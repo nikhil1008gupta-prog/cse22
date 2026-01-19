@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Hero - Level 3</title>
+    <style>
+        .container {
+            display: flex;
+            
+            /* LEVEL 3 TASK: Swap the value below to test! */
+            /* Try: flex-start | center | flex-end | space-between | space-around | space-evenly */
+            justify-content: space-between;
+
+            background-color: #34495e;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 100px;
+        }
+
+        .box {
+            width: 60px;
+            height: 60px;
+            background-color: #f1c40f; /* Sunflower Yellow */
+            color: #2c3e50;
+            text-align: center;
+            line-height: 60px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Level 3: Justify Content</h2>
+    <p>Change <code>justify-content</code> in the CSS to distribute the yellow boxes differently.</p>
+
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+</body>
+</html>
