@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Hero - Level 4</title>
+    <style>
+        .container {
+            display: flex;
+            height: 250px; 
+            border: 3px solid #34495e;
+            background-color: #ecf0f1;
+            
+           
+            align-items: center; 
+            
+           
+            justify-content: center; 
+        }
+
+        .box {
+            width: 80px;
+            
+            height: 80px; 
+            background-color: #9b59b6; 
+            color: white;
+            text-align: center;
+            line-height: 80px;
+            margin: 0 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+       
+        .box-small { font-size: 12px; }
+        .box-large { font-size: 32px; }
+    </style>
+</head>
+<body>
+
+    <h2>Level 4: Vertical Alignment</h2>
+    <p>Using <code>align-items</code> inside a tall container.</p>
+
+    <div class="container">
+        <div class="box box-small">Small</div>
+        <div class="box">Med</div>
+        <div class="box box-large">Big</div>
+    </div>
+
+</body>
+</html>
