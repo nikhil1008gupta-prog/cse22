@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Level 5: Perfect Centering</title>
+    <style>
+       
+        .container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            height: 250px;           
+            background-color: lightgray;
+            border: 2px solid #333;
+        }
+
+       
+        .box {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+</body>
+</html>
