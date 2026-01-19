@@ -3,39 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flexbox Level 5: Perfect Centering</title>
+    <title>Flexbox Hero - Level 5</title>
     <style>
-       
+        /* The container takes up the full height of the browser window */
         .container {
-            display: flex;
-            justify-content: center; 
-            align-items: center;     
-            height: 250px;           
-            background-color: lightgray;
-            border: 2px solid #333;
-        }
-
-       
-        .box {
-            width: 50px;
-            height: 50px;
-            margin: 10px;
-            background-color: #4CAF50;
-            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
+            
+            height: 100vh; /* 100% of Viewport Height */
+            background-color: #2c3e50;
+            margin: 0;
+        }
+
+        /* The item being centered */
+        .card {
+            padding: 40px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
             font-family: sans-serif;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            margin: 0 auto 15px;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="box">1</div>
-        <div class="box">2</div>
-        <div class="box">3</div>
+        <div class="card">
+            <div class="box"></div>
+            <h1>Perfectly Centered</h1>
+            <p>This box is the Flexbox Hero!</p>
+        </div>
     </div>
 
 </body>
