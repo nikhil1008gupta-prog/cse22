@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam - The Ultimate Gaming Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Motiva Sans", Arial, sans-serif;
+            background: #1b2838;
+            color: #c7d5e0;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #171a21 0%, #1b2838 100%);
+            padding: 0;
+        }
+
+        .top-bar {
+            background: #171a21;
+            padding: 8px 0;
+            font-size: 11px;
+        }
+
+        .top-bar .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-links a {
+            color: #b8b6b4;
+            text-decoration: none;
+            margin-right: 15px;
+            text-transform: uppercase;
+        }
+
+        .top-links a:hover {
+            color: #fff;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .login-btn {
+            background: transparent;
+            color: #b8b6b4;
+            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 2px;
+            text-transform: lowercase;
+        }
+
+        .install-btn {
+            background: #5c7e10;
+            color: #d2e885;
+            padding: 5px 15px;
+            text-decoration: none;
+            border-radius: 2px;
+            font-weight: normal;
+        }
+
+        .install-btn:hover {
+            background: #6d9b14;
+        }
+
+        nav {
+            background: #171a21;
+            padding: 15px 0;
+            border-top: 1px solid #3d4450;
+        }
+
+        nav .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .nav-links a {
+            color: #b8b6b4;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .search-bar {
+            position: relative;
+            width: 250px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 35px 8px 15px;
+            background: #316282;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .search-bar input::placeholder {
+            color: #7cabc4;
+        }
+
+        .hero {
+            max-width: 940px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .featured-slider {
+            background: #000;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            height: 450px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s;
+            display: flex;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-image {
+            width: 70%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .slide-info {
+            width: 30%;
+            background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .slide-desc {
+            font-size: 13px;
+            color: #8f98a0;
+            line-height: 1.6;
+        }
+
+        .slide-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 15px 0;
+        }
+
+        .tag {
+            background: rgba(103, 193, 245, 0.2);
+            color: #67c1f5;
+            padding: 3px 8px;
+            font-size: 11px;
+            border-radius: 2px;
+        }
+
+        .slide-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .discount {
+            background: #4c6b22;
+            color: #a4d007;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .price {
+            color: #a4d007;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .original-price {
+            color: #738895;
+            text-decoration: line-through;
+            font-size: 14px;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #fff;
+        }
+
+        .section {
+            max-width: 940px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .browse-more {
+            color: #67c1f5;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .browse-more:hover {
+            color: #fff;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .game-card {
+            background: #000;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .game-details {
+            padding: 15px;
+        }
+
+        .game-title {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .game-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .game-discount {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .game-discount-badge {
+            background: #4c6b22;
+            color: #a4d007;
+            padding: 2px 6px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .game-price {
+            color: #a4d007;
+            font-size: 13px;
+        }
+
+        .game-original-price {
+            color: #738895;
+            text-decoration: line-through;
+            font-size: 11px;
+        }
+
+        footer {
+            background: #171a21;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid #3d4450;
+        }
+
+        .footer-content {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            color: #fff;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #8f98a0;
+            text-decoration: none;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 940px;
+            margin: 30px auto 0;
+            padding: 20px 20px 0;
+            border-top: 1px solid #3d4450;
+            text-align: center;
+            color: #8f98a0;
+            font-size: 11px;
+        }
+
+        @media (max-width: 768px) {
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .slide-image {
+                width: 100%;
+            }
+
+            .slide-info {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-links">
+                    <a href="#">About</a>
+                    <a href="#">Help</a>
+                </div>
+                <div class="user-actions">
+                    <a href="#" class="login-btn">login</a>
+                    <a href="#" class="install-btn">Install Steam</a>
+                </div>
+            </div>
+        </div>
+
+        <nav>
+            <div class="container">
+                <a href="#" class="logo">STEAM</a>
+                <ul class="nav-links">
+                    <li><a href="#">Store</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+                <div class="search-bar">
+                    <input type="text" placeholder="search">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="featured-slider">
+            <div class="slide active">
+                <div class="slide-image">Featured Game 1</div>
+                <div class="slide-info">
+                    <div>
+                        <h2 class="slide-title">Epic Adventure</h2>
+                        <p class="slide-desc">Embark on an incredible journey through mystical lands. Experience stunning graphics and immersive gameplay.</p>
+                        <div class="slide-tags">
+                            <span class="tag">Action</span>
+                            <span class="tag">Adventure</span>
+                            <span class="tag">RPG</span>
+                        </div>
+                    </div>
+                    <div class="slide-price">
+                        <span class="discount">-75%</span>
+                        <div>
+                            <div class="original-price">$59.99</div>
+                            <div class="price">$14.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-image">Featured Game 2</div>
+                <div class="slide-info">
+                    <div>
+                        <h2 class="slide-title">Space Explorer</h2>
+                        <p class="slide-desc">Explore the vast cosmos in this thrilling space simulation. Build your empire among the stars.</p>
+                        <div class="slide-tags">
+                            <span class="tag">Strategy</span>
+                            <span class="tag">Simulation</span>
+                            <span class="tag">Sci-Fi</span>
+                        </div>
+                    </div>
+                    <div class="slide-price">
+                        <span class="discount">-50%</span>
+                        <div>
+                            <div class="original-price">$49.99</div>
+                            <div class="price">$24.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-image">Featured Game 3</div>
+                <div class="slide-info">
+                    <div>
+                        <h2 class="slide-title">Racing Legends</h2>
+                        <p class="slide-desc">Feel the adrenaline rush in the most realistic racing game ever created. Compete with players worldwide.</p>
+                        <div class="slide-tags">
+                            <span class="tag">Racing</span>
+                            <span class="tag">Multiplayer</span>
+                            <span class="tag">Sports</span>
+                        </div>
+                    </div>
+                    <div class="slide-price">
+                        <span class="discount">-60%</span>
+                        <div>
+                            <div class="original-price">$39.99</div>
+                            <div class="price">$15.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <span class="dot active" onclick="changeSlide(0)"></span>
+                <span class="dot" onclick="changeSlide(1)"></span>
+                <span class="dot" onclick="changeSlide(2)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2 class="section-title">Special Offers</h2>
+            <a href="#" class="browse-more">Browse More →</a>
+        </div>
+        <div class="game-grid">
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Mystery Quest</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-80%</span>
+                            <span class="game-original-price">$29.99</span>
+                        </div>
+                        <span class="game-price">$5.99</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Battle Royale Pro</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-65%</span>
+                            <span class="game-original-price">$39.99</span>
+                        </div>
+                        <span class="game-price">$13.99</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Fantasy Warriors</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-70%</span>
+                            <span class="game-original-price">$49.99</span>
+                        </div>
+                        <span class="game-price">$14.99</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Survival Island</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-55%</span>
+                            <span class="game-original-price">$24.99</span>
+                        </div>
+                        <span class="game-price">$11.24</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2 class="section-title">New & Trending</h2>
+            <a href="#" class="browse-more">See More →</a>
+        </div>
+        <div class="game-grid">
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Cyber Revolution</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-45%</span>
+                            <span class="game-original-price">$59.99</span>
+                        </div>
+                        <span class="game-price">$32.99</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Kingdom Builders</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-30%</span>
+                            <span class="game-original-price">$44.99</span>
+                        </div>
+                        <span class="game-price">$31.49</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Horror Nights</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-40%</span>
+                            <span class="game-original-price">$34.99</span>
+                        </div>
+                        <span class="game-price">$20.99</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">Game Image</div>
+                <div class="game-details">
+                    <div class="game-title">Pixel Adventures</div>
+                    <div class="game-footer">
+                        <div class="game-discount">
+                            <span class="game-discount-badge">-85%</span>
+                            <span class="game-original-price">$19.99</span>
+                        </div>
+                        <span class="game-price">$2.99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>About</h4>
+                <a href="#">Company</a>
+                <a href="#">Jobs</a>
+                <a href="#">Press</a>
+                <a href="#">Partners</a>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Legal</a>
+            </div>
+            <div class="footer-column">
+                <h4>Community</h4>
+                <a href="#">Forums</a>
+                <a href="#">Workshop</a>
+                <a href="#">Market</a>
+                <a href="#">Broadcasts</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Steam Clone. All rights reserved. This is a demonstration project.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function changeSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function autoSlide() {
+            const nextSlide = (currentSlide + 1) % slides.length;
+            changeSlide(nextSlide);
+        }
+
+        setInterval(autoSlide, 5000);
+    </script>
+</body>
+</html>
